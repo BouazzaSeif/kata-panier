@@ -1,0 +1,75 @@
+<article
+  class="product-card"
+  [class.product-card--unavailable]="!isAvailable"
+  [attr.aria-label]="'product-title-' + product().id"
+  [attr.aria-label]="
+    'product-category-' + product().id + 'product-availability-' + product().id
+  "
+>
+  <div class="product-card__header">
+    <div class="product-card__title">
+      <h3 id="product-title-{{ product().id }}">{{ product().productName }}</h3>
+      <span
+        id="product-category-{{ product().id }}"
+        class="product-card__category"
+        >{{ product().category }}</span
+      >
+    </div>
+    @if (!isAvailable) {
+    <span
+      class="product-card__unavailable"
+      id="product-availability-{{ product().id }}"
+      aria-live="polite"
+    >
+      <i class="pi pi-ban" aria-hidden="true"></i> Non disponible
+    </span>
+    }
+  </div>
+  <div class="product-card__body">
+    <div class="product-card__price-row">
+      <div class="product-card__price-row-item">
+        <span class="product-card__label">Prix HT:</span>
+        <span class="product-card__value"
+          >{{ product().price | number : "1.2-2" }} €</span
+        >
+      </div>
+      <div class="product-card__price-row-item">
+        <span class="product-card__label">Prix TTC:</span>
+        <span class="product-card__value"
+          >{{ priceTTC | number : "1.2-2" }} €</span
+        >
+      </div>
+      @if (taxes > 0) {
+      <div class="product-card__taxes">
+        <i class="pi pi-book" aria-hidden="true"></i>
+        Taxes: {{ taxAmount | number : "1.2-2" }} € ({{ taxes }}%)
+      </div>
+      }
+    </div>
+    @if (isAvailable) {
+    <div class="product-card__actions">
+      <label [for]="'qty-' + product().id">Quantité :</label>
+      <input
+        [id]="'qty-' + product().id"
+        type="number"
+        min="1"
+        [max]="product().quantity"
+        [(ngModel)]="quantity"
+        class="product-card__qty"
+        [attr.aria-label]="'Quantité pour ' + product().productName"
+      />
+      <button
+        class="secondary-button"
+        (click)="addToCart()"
+        [disabled]="quantity < 1 || quantity > product().quantity"
+        [attr.aria-label]="
+          'Ajouter ' + quantity + product().productName + 'au panier'
+        "
+      >
+        <i class="pi pi-plus mr-2" aria-hidden="true"></i>
+        <span>Ajouter</span>
+      </button>
+    </div>
+    }
+  </div>
+</article>

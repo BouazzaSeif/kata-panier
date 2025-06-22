@@ -1,0 +1,94 @@
+@use "../../../../styles/variables.scss" as *;
+@use "../../../../styles/mixins.scss" as *;
+
+.product-card {
+  @include card;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s;
+  padding: 2rem;
+  transition: box-shadow 0.2s;
+  min-height: 15rem;
+  &:hover {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.13);
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: $kata-spacing-unit;
+    .product-card__title {
+      h3 {
+        font-size: 1.1rem;
+        margin: 0 0 2px 0;
+        color: $kata-primary-color;
+      }
+      .product-card__category {
+        font-size: 0.9em;
+        color: $kata-info-color;
+        font-weight: 500;
+      }
+    }
+    .product-card__unavailable {
+      color: $kata-error-color;
+      font-size: 0.95em;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 600;
+    }
+  }
+  &__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: $kata-spacing-unit;
+  }
+  &__price-row {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: calc($kata-spacing-unit / 2);
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1em;
+      margin-bottom: 2px;
+      .product-card__label {
+        color: $kata-text-color;
+        font-weight: 500;
+      }
+      .product-card__value {
+        color: $kata-primary-color;
+        font-weight: 600;
+      }
+    }
+  }
+  &__taxes {
+    color: $kata-warning-color;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: $kata-spacing-unit;
+  }
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $kata-spacing-unit;
+    justify-content: space-between;
+  }
+  &__qty {
+    padding: calc($kata-spacing-unit / 2);
+    border-radius: $kata-border-radius-base;
+    border: 1px solid $kata-text-color;
+    margin-right: calc($kata-spacing-unit / 2);
+    font-size: 1em;
+    text-align: center;
+  }
+  &--unavailable {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}

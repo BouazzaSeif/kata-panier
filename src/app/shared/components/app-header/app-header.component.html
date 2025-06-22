@@ -1,0 +1,28 @@
+<header class="app-header" role="banner">
+  <a
+    class="app-header__brand"
+    [routerLink]="['products']"
+    aria-label="Accueil Kata Panier"
+    >Kata Panier</a
+  >
+  <nav aria-label="Navigation principale">
+    <a
+      class="primary-button"
+      [routerLink]="['products']"
+      routerLinkActive="active"
+      aria-current="page"
+      >Produits</a
+    >
+    <a
+      class="primary-button"
+      [routerLink]="['cart']"
+      routerLinkActive="active"
+      aria-current="page"
+    >
+      <i class="pi pi-shopping-cart" aria-label="Panier icon"></i>
+      <app-cart-counter
+        aria-label="Nombre d'articles dans le panier"
+      ></app-cart-counter>
+    </a>
+  </nav>
+</header>

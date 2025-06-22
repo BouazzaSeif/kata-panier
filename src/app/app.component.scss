@@ -1,0 +1,7 @@
+@use "../styles/variables" as *;
+
+main {
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: $kata-spacing-unit * 2;
+}

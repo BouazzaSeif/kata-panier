@@ -1,0 +1,11 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.cart-summary {
+  @include card;
+  margin-top: $kata-spacing-unit * 2;
+  font-size: 1.1em;
+  strong {
+    color: $kata-primary-color;
+  }
+}

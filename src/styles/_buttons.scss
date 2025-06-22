@@ -1,0 +1,53 @@
+@use "sass:color";
+@use "./variables.scss" as *;
+
+// Button Styles
+.primary-button {
+  display: inline-block;
+  padding: $kata-spacing-unit $kata-spacing-unit * 2;
+  border: none;
+  border-radius: $kata-border-radius-base;
+  background: $kata-primary-color;
+  color: #fff;
+  font-size: 1rem;
+  font-family: $kata-font-family-base;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: color.adjust($kata-primary-color, $lightness: -10%);
+  }
+  &:disabled {
+    background: color.adjust($kata-primary-color, $lightness: -70%);
+    cursor: not-allowed;
+  }
+  &--accent {
+    background: $kata-accent-color;
+    color: #fff;
+
+    &:hover {
+      background: color.adjust($kata-accent-color, $lightness: -10%);
+    }
+  }
+}
+
+.secondary-button {
+  display: inline-block;
+  padding: $kata-spacing-unit $kata-spacing-unit * 2;
+  border: none;
+  border-radius: $kata-border-radius-base;
+  background: $kata-secondary-color;
+  color: #fff;
+  font-size: 1rem;
+  font-family: $kata-font-family-base;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: color.adjust($kata-secondary-color, $lightness: -10%);
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

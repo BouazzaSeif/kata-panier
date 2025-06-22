@@ -1,0 +1,106 @@
+@use "sass:color";
+@use "../../../../styles/variables.scss" as *;
+@use "../../../../styles/mixins.scss" as *;
+
+:host ::ng-deep .cart-list {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: $kata-spacing-unit * 2;
+  background: #fff;
+  border-radius: $kata-border-radius-base;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  &__title {
+    color: $kata-primary-color;
+    font-size: 1.3em;
+    margin-bottom: $kata-spacing-unit * 2;
+    text-align: center;
+  }
+  &__empty {
+    color: $kata-info-color;
+    font-weight: bold;
+    text-align: center;
+    margin: $kata-spacing-unit * 2 0;
+    font-size: 1.1em;
+    i {
+      margin-right: 6px;
+    }
+  }
+  &__item {
+    @include card;
+    margin-bottom: $kata-spacing-unit * 2;
+    display: flex;
+    flex-direction: column;
+    gap: $kata-spacing-unit * 2;
+    padding: $kata-spacing-unit * 1.5;
+    border-left: 4px solid $kata-primary-color;
+  }
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: calc($kata-spacing-unit / 2);
+    strong {
+      font-size: 1.1em;
+      color: $kata-primary-color;
+    }
+    .cart-list__category {
+      color: $kata-info-color;
+      font-size: 0.95em;
+    }
+  }
+  &__prices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: $kata-spacing-unit * 2;
+    font-size: 0.98em;
+    span {
+      color: $kata-text-color;
+    }
+    b {
+      color: $kata-primary-color;
+    }
+  }
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $kata-spacing-unit;
+    .icon-btn {
+      background: $kata-primary-color;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background 0.2s;
+      &:hover {
+        background: color.adjust($kata-primary-color, $lightness: -8%);
+      }
+      &.remove-btn {
+        background: $kata-error-color;
+        &:hover {
+          background: color.adjust($kata-error-color, $lightness: -8%);
+        }
+      }
+      &.add-btn {
+        background: $kata-success-color;
+        &:hover {
+          background: color.adjust($kata-success-color, $lightness: -8%);
+        }
+      }
+    }
+  }
+  &__qty {
+    width: 50px;
+    padding: calc($kata-spacing-unit / 2);
+    border-radius: $kata-border-radius-base;
+    border: 1px solid $kata-text-color;
+    font-size: 1em;
+    text-align: center;
+  }
+}

@@ -1,0 +1,15 @@
+@if (cart.length > 0) {
+<div
+  class="cart-summary flex flex-wrap justify-content-between gap-3"
+  aria-label="cart-summary-title"
+>
+  <div>
+    <strong>Total Taxes:</strong>
+    {{ getTotalTaxes(cart) | number : "1.2-2" }} €
+  </div>
+  <div>
+    <strong>Prix total TTC:</strong>
+    {{ getTotalTTC(cart) | number : "1.2-2" }} €
+  </div>
+</div>
+}

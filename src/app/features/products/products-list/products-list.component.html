@@ -1,0 +1,60 @@
+<main class="products-list" aria-labelledby="products-list-title">
+  <h2
+    id="products-list-title"
+    class="visually-hidden"
+    hidden="true"
+    aria-label="liste des produits titre"
+    aria-hidden="true"
+  >
+    Liste des produits
+  </h2>
+  <nav class="products-list__filters" aria-label="Filtres de catégories">
+    <!-- Desktop view -->
+    <div
+      class="filter-buttons p-d-flex p-flex-wrap p-gap-2 p-jc-center hidden-mobile"
+      role="group"
+      aria-label="Filtres de catégories (bureau)"
+    >
+      @for (category of categories(); track category) {
+      <button
+        class="products-list__filters-btn"
+        [class.active]="isActiveCategory(category)"
+        (click)="filterByCategory(category)"
+        [attr.aria-pressed]="isActiveCategory(category)"
+        [attr.aria-label]="'Filtrer par catégorie ' + category"
+      >
+        <span class="products-list__filters-icon" aria-hidden="true">🏷️</span>
+        {{ category }}
+      </button>
+      }
+    </div>
+
+    <!-- Mobile view -->
+    <div class="filter-dropdown visible-mobile">
+      <label for="categorySelect" class="visually-hidden"
+        >Filtrer par catégorie</label
+      >
+      <select
+        id="categorySelect"
+        #categorySelect
+        [value]="selectedCategory()"
+        class="mobile-filter"
+        (change)="filterByCategory(categorySelect.value || 'All')"
+        aria-label="Filtrer par catégorie"
+      >
+        @for (cat of categories(); track cat) {
+        <option [value]="cat">{{ cat }}</option>
+        }
+      </select>
+    </div>
+  </nav>
+  <section
+    class="products-list__grid"
+    aria-label="Grille des produits"
+    role="list"
+  >
+    @for (product of filteredProducts(); track product) {
+    <app-product-card [product]="product" role="listitem"></app-product-card>
+    }
+  </section>
+</main>

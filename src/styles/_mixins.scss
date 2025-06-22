@@ -1,0 +1,49 @@
+@use "./variables.scss" as *;
+
+// SCSS Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin card {
+  background: $kata-background-color;
+  border-radius: $kata-border-radius-base;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: $kata-spacing-unit * 2;
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: $kata-breakpoint-mobile) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media (max-width: $kata-breakpoint-tablet) {
+      @content;
+    }
+  } @else if $breakpoint == desktop {
+    @media (max-width: $kata-breakpoint-desktop) {
+      @content;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hidden-mobile {
+    display: none;
+  }
+  .visible-mobile {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .hidden-mobile {
+    display: block;
+  }
+  .visible-mobile {
+    display: none;
+  }
+}

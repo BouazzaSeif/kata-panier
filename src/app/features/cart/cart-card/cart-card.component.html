@@ -1,0 +1,55 @@
+<article
+  class="cart-list__item"
+  tabindex="0"
+  [attr.aria-label]="'Article du panier : ' + productInCart()?.productName"
+>
+  <div class="cart-list__info">
+    <strong>{{ productInCart()?.productName }}</strong>
+    <span class="cart-list__category">({{ productInCart()?.category }})</span>
+  </div>
+  <div class="cart-list__prices">
+    <span
+      >Prix HT: <b>{{ productInCart()?.price | number : "1.2-2" }} €</b></span
+    >
+    <span
+      >Prix TTC:
+      <b
+        >{{
+          (productInCart()?.price ?? 0) + (productInCart()?.price ?? 0) * 0.2
+            | number : "1.2-2"
+        }}
+        €</b
+      ></span
+    >
+    <span
+      >Taxes:
+      <b
+        >{{ (productInCart()?.price ?? 0) * 0.2 | number : "1.2-2" }} €</b
+      ></span
+    >
+  </div>
+  <div class="cart-list__actions">
+    <div class="flex align-items-center gap-3">
+      <label for="qty-{{ productInCart()?.id }}" class="visually-hidden"
+        >Quantité pour {{ productInCart()?.productName }}</label
+      >
+      <input
+        id="qty-{{ productInCart()?.id }}"
+        readonly="true"
+        disabled="true"
+        [value]="productAvailableQuantity()"
+        class="cart-list__qty"
+        [attr.aria-label]="'Quantité pour ' + productInCart()?.productName"
+      />
+    </div>
+    <button
+      class="icon-btn remove-btn"
+      (click)="remove(productInCart()?.id)"
+      [attr.aria-label]="
+        'Retirer ' + productInCart()?.productName + 'du panier'
+      "
+    >
+      <i class="pi pi-trash" aria-hidden="true"></i>
+    </button>
+  </div>
+</article>

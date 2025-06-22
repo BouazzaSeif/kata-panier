@@ -1,0 +1,16 @@
+<section class="cart-list" aria-labelledby="cart-title">
+  <h2 id="cart-title" class="cart-list__title">Mon Panier</h2>
+  @for (item of cart; track item.product.id) {
+  <app-cart-card
+    [productInCart]="item.product"
+    [productAvailableQuantity]="item.quantity"
+    (removeFromCart)="remove($event)"
+     role="listitem"
+  />
+  } @empty {
+  <div class="cart-list__empty" aria-live="polite">
+    <i class="pi pi-shopping-cart" aria-hidden="true"></i> Panier vide
+  </div>
+  }
+  <app-cart-summary></app-cart-summary>
+</section>

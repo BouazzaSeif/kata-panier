@@ -1,0 +1,34 @@
+@use "./variables.scss" as *;
+
+// Typography Styles
+body {
+  font-family: $kata-font-family-base;
+  font-size: $kata-font-size-base;
+  background: linear-gradient(90deg, #eeeeef 0%, #4280c5  100%);
+  color: $kata-text-color;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $kata-font-family-base;
+  font-weight: 700;
+  color: $kata-primary-color;
+  margin-bottom: $kata-spacing-unit;
+}
+
+p {
+  margin-bottom: $kata-spacing-unit;
+  line-height: 1.6;
+}
+a {
+  color: $kata-text-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
