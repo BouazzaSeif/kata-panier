@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CartListComponent } from './cart-list.component';
+import { CartListComponent } from './cart.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { AppStoreService } from '../../../shared/store/app-store.service';
+import { AppStoreService } from '../../shared/store/app-store.service';
 import { signal } from '@angular/core';
 
 describe('CartListComponent', () => {

@@ -1,17 +1,17 @@
 /**
  * Component for displaying the list of items in the shopping cart.
  */
-import { DecimalPipe } from '@angular/common';
 import { Component, effect } from '@angular/core';
-import { AppStoreService } from '../../../shared/store/app-store.service';
-import { CartItem } from '../../../shared/models';
-import { CartSummaryComponent } from '../cart-summary/cart-summary.component';
-import { CartCardComponent } from '../cart-card/cart-card.component';
+import { AppStoreService } from '../../shared/store/app-store.service';
+
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
+import { CartCardComponent } from './components/cart-card/cart-card.component';
+import { CartItem } from './models/cart-item.model';
 
 @Component({
-  selector: 'app-cart-list',
-  templateUrl: './cart-list.component.html',
-  styleUrls: ['./cart-list.component.scss'],
+  selector: 'app-cart',
+  templateUrl: './cart.component.html',
+  styleUrls: ['./cart.component.scss'],
   imports: [CartSummaryComponent, CartCardComponent],
 })
 export class CartListComponent {

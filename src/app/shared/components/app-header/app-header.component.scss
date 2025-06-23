@@ -1,4 +1,4 @@
-@use "../../../../styles/variables" as *;
+@use "variables" as *;
 
 .app-header {
   display: flex;
@@ -11,6 +11,7 @@
   background: $kata-primary-color;
   color: #fff;
   z-index: 999;
+  max-height: 70px;
   &__brand {
     font-size: 1.5em;
     font-weight: bold;

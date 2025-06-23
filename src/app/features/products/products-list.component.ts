@@ -8,10 +8,10 @@ import {
   effect,
   signal,
 } from '@angular/core';
-import { ProductsApiService } from '../../../core/services/products-api.service';
-import { AppStoreService } from '../../../shared/store/app-store.service';
-import { Product } from '../../../shared/models';
-import { ProductCardComponent } from '../product-card/product-card.component';
+import { ProductsApiService } from '../../core/services/products-api.service';
+import { AppStoreService } from '../../shared/store/app-store.service';
+import { Product } from './models';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 @Component({
   selector: 'app-products-list',

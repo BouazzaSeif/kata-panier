@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
-  imports: [],
   template: `<footer
     class="w-full flex justify-content-center align-items-center footer"
     role="contentinfo"
@@ -15,7 +14,7 @@ import { Component } from '@angular/core';
   styles: [
     `
       .footer {
-        background: linear-gradient(90deg, #eeeeef 0%, #4280c5  100%);
+        background: linear-gradient(90deg, #eeeeef 0%, #4280c5 100%);
         padding: 0.2rem;
         text-align: center;
         width: 100%;

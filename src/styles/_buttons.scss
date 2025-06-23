@@ -3,7 +3,7 @@
 
 // Button Styles
 .primary-button {
-  display: inline-block;
+  display: flex;
   padding: $kata-spacing-unit $kata-spacing-unit * 2;
   border: none;
   border-radius: $kata-border-radius-base;
@@ -13,7 +13,6 @@
   font-family: $kata-font-family-base;
   cursor: pointer;
   transition: background 0.2s;
-
   &:hover {
     background: color.adjust($kata-primary-color, $lightness: -10%);
   }
@@ -33,7 +32,7 @@
 
 .secondary-button {
   display: inline-block;
-  padding: $kata-spacing-unit $kata-spacing-unit * 2;
+  padding: $kata-spacing-unit;
   border: none;
   border-radius: $kata-border-radius-base;
   background: $kata-secondary-color;

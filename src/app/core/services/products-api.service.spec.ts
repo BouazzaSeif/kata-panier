@@ -9,7 +9,7 @@ import {
 import { TestBed } from '@angular/core/testing';
 import { firstValueFrom } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { Product } from '../../shared/models';
+import { Product } from '../../features/products/models';
 import { ProductsApiService } from './products-api.service';
 
 describe('ProductsApiService', () => {

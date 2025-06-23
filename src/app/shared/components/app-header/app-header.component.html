@@ -2,6 +2,8 @@
   <a
     class="app-header__brand"
     [routerLink]="['products']"
+    ariaCurrentWhenActive="page"
+    aria-current="page"
     aria-label="Accueil Kata Panier"
     >Kata Panier</a
   >
@@ -10,6 +12,7 @@
       class="primary-button"
       [routerLink]="['products']"
       routerLinkActive="active"
+      ariaCurrentWhenActive="page"
       aria-current="page"
       >Produits</a
     >
@@ -17,6 +20,7 @@
       class="primary-button"
       [routerLink]="['cart']"
       routerLinkActive="active"
+      ariaCurrentWhenActive="page"
       aria-current="page"
     >
       <i class="pi pi-shopping-cart" aria-label="Panier icon"></i>

@@ -6,7 +6,8 @@ import {
   TAX_RATE_FOOD_MEDICINE,
   ADDITIONAL_TAX_IMPORTED,
 } from '../enums/tax-const';
-import { Product, CartItem } from '../models';
+import { Product } from '../../features/products/models';
+import { CartItem } from '../../features/cart/models/cart-item.model';
 
 describe('TaxUtils', () => {
   const book: Product = {

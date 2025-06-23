@@ -1,11 +1,11 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ProductsApiService } from '../../../core/services/products-api.service';
-import { AppStoreService } from '../../../shared/store/app-store.service';
+import { ProductsApiService } from '../../core/services/products-api.service';
+import { AppStoreService } from '../../shared/store/app-store.service';
 import { ProductsListComponent } from './products-list.component';
 
-import { Category } from '../../../shared/enums/product-category.enum';
-import { Product } from '../../../shared/models';
+import { Category } from '../../shared/enums/product-category.enum';
+import { Product } from './models';
 
 describe('ProductsListComponent', () => {
   let component: ProductsListComponent;

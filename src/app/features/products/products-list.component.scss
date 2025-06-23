@@ -1,5 +1,5 @@
-@use "../../../../styles/variables" as *;
-@use "../../../../styles/mixins" as *;
+@use "variables" as *;
+@use "mixins" as *;
 
 .products-list {
   &__filters {
@@ -8,6 +8,11 @@
     flex-wrap: wrap;
     gap: $kata-spacing-unit;
     justify-content: center;
+    @media (max-width: 1024px) {
+      // Covers both mobile and tablet
+      flex-direction: column;
+      align-items: stretch;
+    }
     &-btn {
       margin-right: calc($kata-spacing-unit / 2);
       padding: $kata-spacing-unit $kata-spacing-unit * 2;
@@ -22,17 +27,13 @@
         color: white;
         border-color: $kata-primary-color;
       }
-    }
-    &-icon {
-      margin-right: $kata-spacing-unit;
-    }
-    @media (max-width: $kata-breakpoint-mobile) {
-      flex-direction: column;
-      align-items: stretch;
-      .products-list__filters-btn {
+      @include respond-to(mobile) {
         width: 100%;
         margin-bottom: calc($kata-spacing-unit / 2);
       }
+    }
+    &-icon {
+      margin-right: $kata-spacing-unit;
     }
   }
   &__grid {
@@ -40,7 +41,10 @@
     grid-template-columns: repeat(3, 1fr);
     gap: $kata-spacing-unit * 2;
     @include respond-to(mobile) {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(1, 1fr);
+    }
+    @include respond-to(tablet) {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }

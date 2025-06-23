@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CartCardComponent } from './cart-card.component';
 import { DecimalPipe } from '@angular/common';
-import { Product } from '../../../shared/models';
-import { Category } from '../../../shared/enums/product-category.enum';
+import { Category } from '../../../../shared/enums/product-category.enum';
+import { Product } from '../../../products/models';
 
 describe('CartCardComponent', () => {
   let component: CartCardComponent;

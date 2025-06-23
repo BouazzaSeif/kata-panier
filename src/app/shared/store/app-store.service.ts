@@ -2,7 +2,8 @@
  * Centralized store service for managing application state (products, cart) using Angular Signals and RxJS.
  */
 import { Injectable, signal, computed } from '@angular/core';
-import { CartItem, Product } from '../models';
+import { Product } from '../../features/products/models';
+import { CartItem } from '../../features/cart/models/cart-item.model';
 
 @Injectable({ providedIn: 'root' })
 export class AppStoreService {

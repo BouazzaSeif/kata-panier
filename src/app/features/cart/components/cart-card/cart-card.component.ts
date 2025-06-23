@@ -7,7 +7,7 @@ import {
   input,
   output,
 } from '@angular/core';
-import { Product } from '../../../shared/models';
+import { Product } from '../../../products/models';
 import { DecimalPipe } from '@angular/common';
 
 @Component({

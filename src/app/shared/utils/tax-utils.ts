@@ -1,7 +1,8 @@
 /**
  * Utility functions for tax calculations and related helpers.
  */
-import { CartItem, Product } from '../models';
+import { CartItem } from '../../features/cart/models/cart-item.model';
+import { Product } from '../../features/products/models';
 import { Category } from '../enums/product-category.enum';
 import {
   ADDITIONAL_TAX_IMPORTED,

@@ -6,7 +6,7 @@ import { inject, Injectable, resource } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { Product } from '../../shared/models';
+import { Product } from '../../features/products/models';
 
 @Injectable({
   providedIn: 'root',

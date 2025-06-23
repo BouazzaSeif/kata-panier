@@ -1,11 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CartSummaryComponent } from './cart-summary.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { AppStoreService } from '../../../shared/store/app-store.service';
-import { TaxUtils } from '../../../shared/utils/tax-utils';
-import { CartItem } from '../../../shared/utils/models';
-
-jest.mock('../../../shared/utils/tax-utils');
+import { AppStoreService } from '../../../../shared/store/app-store.service';
+import { TaxUtils } from '../../../../shared/utils/tax-utils';
+import { CartItem } from '../../models/cart-item.model';
 
 describe('CartSummaryComponent', () => {
   let component: CartSummaryComponent;

@@ -8,11 +8,11 @@ import {
   inject,
   input,
 } from '@angular/core';
-import { AppStoreService } from '../../../shared/store/app-store.service';
+import { AppStoreService } from '../../../../shared/store/app-store.service';
 import { FormsModule } from '@angular/forms';
 import { DecimalPipe } from '@angular/common';
-import { Product } from '../../../shared/models';
-import { TaxUtils } from '../../../shared/utils/tax-utils';
+import { Product } from '../../models';
+import { TaxUtils } from '../../../../shared/utils/tax-utils';
 
 @Component({
   selector: 'app-product-card',

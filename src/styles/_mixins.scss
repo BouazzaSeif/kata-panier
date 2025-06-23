@@ -20,7 +20,7 @@
       @content;
     }
   } @else if $breakpoint == tablet {
-    @media (max-width: $kata-breakpoint-tablet) {
+    @media (max-width: $kata-breakpoint-tablet) and (min-width: ($kata-breakpoint-mobile + 1)) {
       @content;
     }
   } @else if $breakpoint == desktop {

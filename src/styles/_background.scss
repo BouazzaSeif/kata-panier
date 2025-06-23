@@ -1,96 +1,94 @@
-/* Animated background elements */
 .bg-decoration {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   overflow: hidden;
   z-index: -1;
-}
 
-.bg-decoration::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.1) 1px,
-    transparent 1px
-  );
-  background-size: 50px 50px;
-  animation: float 20s linear infinite;
+  &::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.1) 1px,
+        transparent 1px
+      )
+      0 0 / 50px 50px;
+    animation: float 20s linear infinite;
+  }
 }
 
 .floating-shapes {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
 }
 
 .shape {
   position: absolute;
   opacity: 0.1;
   animation: floatUpDown 6s ease-in-out infinite;
-}
-
-.shape:nth-child(1) {
-  top: 20%;
-  left: 10%;
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(45deg, #4ecdc4, #44a08d);
   border-radius: 50%;
-  animation-delay: 0s;
-}
+  @for $i from 1 through 4 {
+    &:nth-child(#{$i}) {
+      $properties: (
+        1: (
+          top: 20%,
+          left: 10%,
+          size: 80px,
+          colors: #4ecdc4 #44a08d,
+          delay: 0s,
+        ),
+        2: (
+          top: 60%,
+          right: 15%,
+          size: 60px,
+          colors: #ff6b6b #ee5a24,
+          delay: 2s,
+        ),
+        3: (
+          top: 80%,
+          left: 20%,
+          size: 100px,
+          colors: #feca57 #ff9ff3,
+          delay: 4s,
+        ),
+        4: (
+          top: 40%,
+          right: 30%,
+          size: 40px,
+          colors: #a8edea #fed6e3,
+          delay: 1s,
+        ),
+      );
 
-.shape:nth-child(2) {
-  top: 60%;
-  right: 15%;
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-  border-radius: 20px;
-  animation-delay: 2s;
-}
-
-.shape:nth-child(3) {
-  top: 80%;
-  left: 20%;
-  width: 100px;
-  height: 100px;
-  background: linear-gradient(45deg, #feca57, #ff9ff3);
-  border-radius: 50%;
-  animation-delay: 4s;
-}
-
-.shape:nth-child(4) {
-  top: 40%;
-  right: 30%;
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(45deg, #a8edea, #fed6e3);
-  border-radius: 50%;
-  animation-delay: 1s;
+      $prop: map-get($properties, $i);
+      top: map-get($prop, top);
+      #{if($i == 2 or $i == 4, 'right', 'left')}: map-get(
+        $prop,
+        if($i == 2 or $i == 4, "right", "left")
+      );
+      width: map-get($prop, size);
+      height: map-get($prop, size);
+      background: linear-gradient(
+        45deg,
+        nth(map-get($prop, colors), 1),
+        nth(map-get($prop, colors), 2)
+      );
+      animation-delay: map-get($prop, delay);
+    }
+  }
 }
 
 @keyframes float {
-  0% {
-    transform: translateX(0) translateY(0);
-  }
-  100% {
-    transform: translateX(-50px) translateY(-50px);
+  to {
+    transform: translate(-50px, -50px);
   }
 }
 
 @keyframes floatUpDown {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
   50% {
     transform: translateY(-20px) rotate(180deg);
   }

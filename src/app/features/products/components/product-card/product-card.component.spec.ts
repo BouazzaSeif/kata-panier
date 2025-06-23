@@ -4,11 +4,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductCardComponent } from './product-card.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { AppStoreService } from '../../../shared/store/app-store.service';
-import { TaxUtils } from '../../../shared/utils/tax-utils';
-import { Product } from '../../../shared/models';
-
-jest.mock('../../../shared/utils/tax-utils');
+import { AppStoreService } from '../../../../shared/store/app-store.service';
+import { TaxUtils } from '../../../../shared/utils/tax-utils';
+import { Product } from '../../models';
 
 describe('ProductCardComponent', () => {
   let component: ProductCardComponent;

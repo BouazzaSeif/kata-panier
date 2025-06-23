@@ -3,9 +3,9 @@
  */
 import { DecimalPipe } from '@angular/common';
 import { Component, effect } from '@angular/core';
-import { AppStoreService } from '../../../shared/store/app-store.service';
-import { CartItem } from '../../../shared/models';
-import { TaxUtils } from '../../../shared/utils/tax-utils';
+import { AppStoreService } from '../../../../shared/store/app-store.service';
+import { TaxUtils } from '../../../../shared/utils/tax-utils';
+import { CartItem } from '../../models/cart-item.model';
 
 @Component({
   selector: 'app-cart-summary',
