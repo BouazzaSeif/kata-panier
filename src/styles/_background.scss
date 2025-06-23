@@ -1,3 +1,5 @@
+@use "sass:map";
+@use "sass:list";
 .bg-decoration {
   position: fixed;
   inset: 0;
@@ -64,20 +66,20 @@
         ),
       );
 
-      $prop: map-get($properties, $i);
-      top: map-get($prop, top);
-      #{if($i == 2 or $i == 4, 'right', 'left')}: map-get(
+      $prop: map.get($properties, $i);
+      top: map.get($prop, top);
+      #{if($i == 2 or $i == 4, 'right', 'left')}: map.get(
         $prop,
         if($i == 2 or $i == 4, "right", "left")
       );
-      width: map-get($prop, size);
-      height: map-get($prop, size);
+      width: map.get($prop, size);
+      height: map.get($prop, size);
       background: linear-gradient(
         45deg,
-        nth(map-get($prop, colors), 1),
-        nth(map-get($prop, colors), 2)
+        list.nth(map.get($prop, colors), 1),
+        list.nth(map.get($prop, colors), 2)
       );
-      animation-delay: map-get($prop, delay);
+      animation-delay: map.get($prop, delay);
     }
   }
 }

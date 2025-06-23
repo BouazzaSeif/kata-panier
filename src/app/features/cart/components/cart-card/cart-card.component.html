@@ -31,7 +31,8 @@
   <div class="cart-list__actions">
     <div class="flex align-items-center gap-3">
       <label for="qty-{{ productInCart()?.id }}" class="visually-hidden"
-        >Quantité pour {{ productInCart()?.productName }}</label
+        >Quantité pour
+        <strong>{{ productInCart()?.productName }}</strong></label
       >
       <input
         id="qty-{{ productInCart()?.id }}"

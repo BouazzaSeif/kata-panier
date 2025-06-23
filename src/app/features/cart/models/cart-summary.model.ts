@@ -1,5 +1,5 @@
 export interface CartSummary {
-  totalItems: number;
-  totalPrice: number;
-  totalTaxes: number;
+  readonly totalItems: number;
+  readonly totalPrice: number;
+  readonly totalTaxes: number;
 }

@@ -30,7 +30,6 @@ export const appConfig: ApplicationConfig = {
         },
       },
     }),
-
     { provide: LOCAL_STORAGE_PREFIX, useValue: 'kata-panier-cart' },
     {
       provide: LocalStorageManager,

@@ -15,6 +15,16 @@ import {
  */
 export class TaxUtils {
   /**
+   * Map of tax percentages for each product category.
+   */
+  private static readonly _taxPercentageMap: Record<Category, number> = {
+    [Category.Books]: TAX_RATE_BOOKS,
+    [Category.Food]: TAX_RATE_FOOD_MEDICINE,
+    [Category.Medecine]: TAX_RATE_FOOD_MEDICINE,
+    [Category.Electric]: TAX_RATE_DEFAULT,
+    [Category.Parfum]: TAX_RATE_DEFAULT,
+  };
+  /**
    * Rounds a tax amount up to the nearest 0.05.
    */
   static roundTax(amount: number): number {
@@ -25,26 +35,14 @@ export class TaxUtils {
    * Returns the base tax rate for a product category.
    */
   private static getBaseTaxRate(category: Category): number {
-    if (category === Category.Books) {
-      return TAX_RATE_BOOKS;
-    }
-    if (category === Category.Food || category === Category.Medecine) {
-      return TAX_RATE_FOOD_MEDICINE;
-    }
-    return TAX_RATE_DEFAULT;
+    return this._taxPercentageMap[category];
   }
 
   /**
    * Returns the base tax percentage for a product category (for display).
    */
   private static getBaseTaxPercentage(category: Category): number {
-    if (category === Category.Books) {
-      return TAX_RATE_BOOKS * 100;
-    }
-    if (category === Category.Food || category === Category.Medecine) {
-      return TAX_RATE_FOOD_MEDICINE * 100;
-    }
-    return TAX_RATE_DEFAULT * 100;
+    return this._taxPercentageMap[category] * 100;
   }
 
   /**
