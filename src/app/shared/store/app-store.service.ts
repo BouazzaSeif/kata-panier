@@ -1,9 +1,10 @@
 /**
  * Centralized store service for managing application state (products, cart) using Angular Signals and RxJS.
  */
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, effect } from '@angular/core';
 import { Product } from '../../features/products/models';
 import { CartItem } from '../../features/cart/models/cart-item.model';
+import { ProductsApiService } from '../../core/services/products-api.service';
 
 @Injectable({ providedIn: 'root' })
 export class AppStoreService {
@@ -19,6 +20,12 @@ export class AppStoreService {
       0
     )
   );
+  constructor(private _productsApiService: ProductsApiService) {
+    // update the store with products from the API service
+    effect(() => {
+      this.setProducts(this._productsApiService.productsResource.value() || []);
+    });
+  }
 
   setProducts(products: Product[]) {
     this.$products.set(products);

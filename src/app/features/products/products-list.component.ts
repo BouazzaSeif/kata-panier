@@ -6,6 +6,7 @@ import {
   Component,
   computed,
   effect,
+  inject,
   signal,
 } from '@angular/core';
 import { ProductsApiService } from '../../core/services/products-api.service';
@@ -22,6 +23,7 @@ import { ProductCardComponent } from './components/product-card/product-card.com
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsListComponent {
+  _store = inject(AppStoreService);
   /* Current selected category filter */
   selectedCategory = signal<string>('All');
   /* List of all products from store */
@@ -41,17 +43,6 @@ export class ProductsListComponent {
       : this.products();
   });
 
-  constructor(
-    private _store: AppStoreService,
-    private _productsApiService: ProductsApiService
-  ) {
-    // update the store with products from the API service
-    effect(() => {
-      this._store.setProducts(
-        this._productsApiService.productsResource.value() || []
-      );
-    });
-  }
   /**
    * Updates the selected category filter
    */

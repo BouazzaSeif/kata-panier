@@ -112,27 +112,28 @@ src/
   app/
     core/
       services/
-        products-api.service
     features/
       cart/
-        cart-card/
-        cart-list/
-        cart-summary/
+        components/
+          cart-card/
+          cart-summary/
+        models/
       products/
-        product-card/
-        products-list/
+        components/
+          product-card/
+        models/
     shared/
       components/
         app-header/
         cart-counter/
         footer/
       enums/
-      models/
       store/
       utils/
   environments/
   main.ts
   styles/
+    _background.scss
     _buttons.scss
     _mixins.scss
     _typography.scss
