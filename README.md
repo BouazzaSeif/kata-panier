@@ -15,6 +15,7 @@ Kata Panier is a modern, modular Angular application designed to manage a shoppi
 - [Design System](#design-system)
 - [Setup & Development](#setup--development)
 - [State Management](#state-management)
+- [Local Storage Configuration](#local-storage-configuration)
 - [API](#api)
 - [Best Practices](#best-practices)
 - [Customization](#customization)
@@ -35,6 +36,7 @@ Kata Panier is a modern, modular Angular application designed to manage a shoppi
 - **SCSS** (design system)
 - **Jest** (unit testing)
 - **json-server** (mock API)
+- **localStorageManager** (Factory provider)
 
 ## Accessibility
 
@@ -67,6 +69,8 @@ This application is built with accessibility as a core principle, following WCAG
 - **Responsive Design**: 3 cards per row on desktop, 1 per row on mobile.
 - **Design System**: SCSS variables, mixins, and reusable components.
 - **Reactive State**: Lightweight store service using RxJS (mini-NgRx/Akita pattern).
+- **Factory Provider**: Used to dynamically create `LocalStorageManager` instances with runtime configuration
+- **Injection Token**: `LOCAL_STORAGE_PREFIX` provides the localStorage key prefix to avoid naming conflicts
 
 ## Architecture
 
@@ -112,6 +116,8 @@ src/
   app/
     core/
       services/
+        product.service
+        local.storage.manager
     features/
       cart/
         components/
@@ -145,6 +151,10 @@ src/
 - All state (products, cart) is managed in `AppStoreService` using Angular Signals and RxJS.
 - Components subscribe to observables for reactivity.
 - All business logic (add, remove, update, clear) is encapsulated in the store service.
+
+## Local Storage Configuration
+
+This app uses a **Factory Provider** to inject `LocalStorageManager` with a custom storage prefix. The `LOCAL_STORAGE_PREFIX` injection token ensures each storage instance gets the correct namespace for localStorage keys.
 
 ## API
 

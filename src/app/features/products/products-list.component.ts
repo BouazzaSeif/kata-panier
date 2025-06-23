@@ -4,15 +4,12 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  computed,
-  effect,
-  inject,
-  signal,
+  computed, inject,
+  signal
 } from '@angular/core';
-import { ProductsApiService } from '../../core/services/products-api.service';
 import { AppStoreService } from '../../shared/store/app-store.service';
-import { Product } from './models';
 import { ProductCardComponent } from './components/product-card/product-card.component';
+import { Product } from './models';
 
 @Component({
   selector: 'app-products-list',

@@ -279,11 +279,6 @@ describe('ProductsListComponent', () => {
       expect(component['_store']).toBeDefined();
       expect(component['_store']).toBe(mockAppStoreService);
     });
-
-    it('should have products api service injected', () => {
-      expect(component['_productsApiService']).toBeDefined();
-      expect(component['_productsApiService']).toBe(mockProductsApiService);
-    });
   });
   describe('filteredProducts computed', () => {
     it('should return all products when selectedCategory is All', () => {

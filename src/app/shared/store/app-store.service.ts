@@ -5,8 +5,11 @@ import { Injectable, signal, computed, effect } from '@angular/core';
 import { Product } from '../../features/products/models';
 import { CartItem } from '../../features/cart/models/cart-item.model';
 import { ProductsApiService } from '../../core/services/products-api.service';
+import { LocalStorageManager } from '../../core/services/local-storage.manager';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class AppStoreService {
   $products = signal<Product[]>([]);
   $cart = signal<CartItem[]>([]);
@@ -20,15 +23,41 @@ export class AppStoreService {
       0
     )
   );
-  constructor(private _productsApiService: ProductsApiService) {
+
+  constructor(
+    private _productsApiService: ProductsApiService,
+    private _localStorageManager: LocalStorageManager<CartItem[]>
+  ) {
+    // Charger le panier depuis le localStorage si disponible
+    const savedCart = this._localStorageManager.load();
+    if (savedCart) {
+      this.$cart.set(savedCart);
+    }
     // update the store with products from the API service
     effect(() => {
       this.setProducts(this._productsApiService.productsResource.value() || []);
     });
+    // Sauvegarder le panier à chaque modification
+    effect(() => {
+      this._localStorageManager.save(this.$cart());
+    });
   }
 
   setProducts(products: Product[]) {
-    this.$products.set(products);
+    // Ajuste la quantité des produits selon le panier localStorage
+    const cart = this.$cart();
+    const updatedProducts = products.map((product) => {
+      const cartItem = cart.find((item) => item.product.id === product.id);
+      if (cartItem) {
+        // On soustrait la quantité du panier à la quantité du produit
+        return {
+          ...product,
+          quantity: (product.quantity ?? 0) - cartItem.quantity,
+        };
+      }
+      return product;
+    });
+    this.$products.set(updatedProducts);
   }
 
   /**

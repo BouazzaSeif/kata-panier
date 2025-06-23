@@ -10,6 +10,9 @@ import {
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { providePrimeNG } from 'primeng/config';
+import { LOCAL_STORAGE_PREFIX } from '../environments/environment';
+import { LocalStorageManager } from './core/services/local-storage.manager';
+import { CartItem } from './features/cart/models/cart-item.model';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -27,5 +30,13 @@ export const appConfig: ApplicationConfig = {
         },
       },
     }),
+
+    { provide: LOCAL_STORAGE_PREFIX, useValue: 'kata-panier-cart' },
+    {
+      provide: LocalStorageManager,
+      useFactory: (prefix: string) =>
+        new LocalStorageManager<CartItem[]>(prefix),
+      deps: [LOCAL_STORAGE_PREFIX],
+    },
   ],
 };

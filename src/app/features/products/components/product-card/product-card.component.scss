@@ -24,19 +24,19 @@
           margin: 0 0 2px 0;
           color: $kata-primary-color;
         }
-        &__category {
-          font-size: 0.9em;
-          color: $kata-info-color;
-          font-weight: 500;
-        }
-        &__unavailable {
-          color: $kata-error-color;
-          font-size: 0.95em;
-          display: flex;
-          align-items: center;
-          gap: 4px;
-          font-weight: 600;
-        }
+      }
+      &__category {
+        font-size: 0.9em;
+        color: $kata-info-color;
+        font-weight: 500;
+      }
+      &__unavailable {
+        color: $kata-error-color;
+        font-size: 0.95em;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-weight: 600;
       }
     }
   }

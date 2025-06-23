@@ -1,10 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 import { AppStoreService } from './app-store.service';
-import { Product } from '../utils/models';
+
 import { Category } from '../enums/product-category.enum';
+import { Product } from '../../features/products/models';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { LocalStorageManager } from '../../core/services/local-storage.manager';
+import { LOCAL_STORAGE_PREFIX } from '../../../environments/environment';
+import { ProductsApiService } from '../../core/services/products-api.service';
+import { CartItem } from '../../features/cart/models/cart-item.model';
 
 describe('AppStoreService', () => {
   let service: AppStoreService;
+  let mockProductsApiService: jest.Mocked<ProductsApiService>;
 
   const mockProducts: Product[] = [
     {
@@ -34,7 +42,41 @@ describe('AppStoreService', () => {
   ];
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    // Mock ProductsApiService
+    mockProductsApiService = {
+      productsResource: {
+        value: jest.fn().mockReturnValue([]),
+      },
+    } as any;
+
+    // Mock localStorage for testing
+    Object.defineProperty(window, 'localStorage', {
+      value: {
+        getItem: jest.fn(),
+        setItem: jest.fn(),
+        removeItem: jest.fn(),
+        clear: jest.fn(),
+      },
+      writable: true,
+    });
+    TestBed.configureTestingModule({
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        { provide: ProductsApiService, useValue: mockProductsApiService },
+
+        // Provide the storage prefix
+        { provide: LOCAL_STORAGE_PREFIX, useValue: 'test-app-' },
+
+        // Use the same factory pattern as in your app
+        {
+          provide: LocalStorageManager,
+          useFactory: (prefix: string) =>
+            new LocalStorageManager<CartItem[]>(prefix),
+          deps: [LOCAL_STORAGE_PREFIX],
+        },
+      ],
+    });
     service = TestBed.inject(AppStoreService);
   });
 
